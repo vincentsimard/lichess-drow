@@ -3,10 +3,7 @@
     "version": "0.1.0",
     "manifest_version": 2,
     "description": "Warns lichess.org players of draw offers with an audio sample",
-    "icons": {
-        "16": "images/icon-16.png",
-        "128": "images/icon-128.png"
-    },
+    "icons": {},
     "default_locale": "en",
     "content_scripts": [
         {
