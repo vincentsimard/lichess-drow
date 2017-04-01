@@ -1,0 +1,33 @@
+{
+    "name": "Adds the BlitzIn for ICC \"draw\" sound to lichess.org",
+    "version": "0.1.0",
+    "manifest_version": 2,
+    "description": "Warns lichess.org players of draw offers with an audio sample",
+    "icons": {
+        "16": "images/icon-16.png",
+        "128": "images/icon-128.png"
+    },
+    "default_locale": "en",
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*.lichess.org/*",
+                "https://*.lichess.org/*"
+            ],
+            "css": [
+                "styles/main.css"
+            ],
+            "js": [
+                "scripts/lichess-drow.js"
+            ],
+            "run_at": "document_end",
+            "all_frames": false
+        }
+    ],
+    "web_accessible_resources": [
+        "ogg/*"
+    ],
+    "permissions": [
+        "storage"
+    ]
+}
