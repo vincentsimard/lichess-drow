@@ -13,10 +13,22 @@ var droooow = function() {
 };
 
 var handleMutation = function(mutations) {
-  var addedNodes = mutations[0].addedNodes;
+  var addedNodes, text;
 
-  if (addedNodes.length > 0 && addedNodes[0].innerText.includes('offers draw')) {
-    droooow();
+  mutations = mutations.filter(function(record) {
+    return record.addedNodes.length > 0;
+  });
+
+  if (mutations.length === 0) { return; }
+
+  addedNodes = mutations[0].addedNodes;
+
+  if (addedNodes.length > 0) {
+    text = addedNodes[0].innerText;
+
+    if (text && text.toLowerCase().includes('draw')) {
+      droooow();
+    }
   }
 };
 
@@ -24,8 +36,9 @@ var init = function() {
   var drowObserver = new MutationObserver(handleMutation);
   var config = { childList: true };
   var elChat = document.querySelector('.discussion .messages');
+  var elControlButtons = document.querySelector('.lichess_ground .control.buttons');
 
-  drowObserver.observe(elChat, config);
+  drowObserver.observe(elControlButtons, config);
 };
 
 // Blah
